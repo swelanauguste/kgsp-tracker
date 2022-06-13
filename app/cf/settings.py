@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.humanize",
     "users",
+    "core",
     # 3rd party
     "crispy_forms",
     # "allauth",
