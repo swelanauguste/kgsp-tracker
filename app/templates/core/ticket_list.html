@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block head_title %}
+Tickets
+{% endblock head_title %}
+
+
+{% block content %}
+<div class="container py-3">
+    <div class="h1 text-center">Tickets</div>
+    <hr>
+    <div class="container py-3">
+        <div class="py-3">
+            {% include 'components/pagination.html' %}
+        </div>
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Summary</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">more</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for object in object_list %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{object.summary}}</td>
+                    <td>{{object.created_at|naturaltime}} by
+                        {{object.created_by}}
+                    </td>
+                    <td>
+                        <a class="text-info"
+                            href="{{ object.get_absolute_url}}"><span
+                                class="material-symbols-outlined">
+                                info
+                            </span></a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        <div class="py-3">
+            {% include 'components/pagination.html' %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

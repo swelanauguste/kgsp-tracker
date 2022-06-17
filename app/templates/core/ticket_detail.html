@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block head_title %}
+{{object}}
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container py-3">
+    <hr>
+    <div class="container py-3">
+        <div class="card shadow bg-light mx-auto"
+            style="width: 36rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{object}}</h5>
+                <hr>
+                <p class="card-text">{{object.details}}</p>
+                <p title="assigned to"
+                    class="card-text list-inline-item">
+                    {{object.assigned_to|title}}</p>
+                <hr>
+                <div class="list-inline">
+                    <div class="text-end">
+                        <p title="created"
+                            class="card-text text-muted list-inline-item">
+                            {{object.created_at|naturaltime}}</p>
+                        <p title="created by"
+                            class="card-text text-muted list-inline-item">
+                            {{object.created_by|title}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
